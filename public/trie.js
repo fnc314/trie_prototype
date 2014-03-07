@@ -39,23 +39,14 @@ Trie.prototype.getWords = function(words, currentWord) {
   // since a Trie doesn't know about its parents.
   words = words || [];
   currentWord = currentWord || "";
-  // _.each(this.characters, function(char){
-  // this.characters.forEach(function(char){
   for (var char in this.characters) {
-    // console.log("at line 43 char is " + char);
-    currentWord += char;
+    var newWord = currentWord + char;
     if (this.characters[char].isWord) {
-      words.push(currentWord);
+      words.push(newWord);
     }
-    // console.log("char.characters = "+char.characters);
-    // console.log("this = " + this);
-    // console.log("char = " + char);
     if (this.characters[char].characters) {
-      this.characters[char].getWords(words, currentWord);
-    } else {
-      currentWord = "";
+      this.characters[char].getWords(words, newWord);
     }
-  // });
   }
   return words;
 };
