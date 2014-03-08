@@ -15,8 +15,6 @@ Trie.prototype.learn = function(word, index) {
       this.characters[w].learn(word, index+1);
     }
   }
-
-
   // This function should add the given word,
   // starting from the given index,
   // to this Trie.
@@ -39,27 +37,52 @@ Trie.prototype.getWords = function(words, currentWord) {
   // since a Trie doesn't know about its parents.
   words = words || [];
   currentWord = currentWord || "";
+  if (this.isWord) {
+    words.push(currentWord);
+  }
   for (var char in this.characters) {
     var newWord = currentWord + char;
-    if (this.characters[char].isWord) {
-      words.push(newWord);
-    }
     if (this.characters[char].characters) {
       this.characters[char].getWords(words, newWord);
     }
   }
   return words;
 };
-  // This function will return all the words which are
-  // contained in this Trie.
-  // it will use currentWord as a prefix,
-  // since a Trie doesn't know about its parents.
 
+// Re-write recursively (see Line 73)
 Trie.prototype.find = function(word, index) {
-  // This function will return the node in the trie
-  // which corresponds to the end of the passed in word.
+  word = word || "";
+  index = index || 0;
+  var _this = this;
+  var chars;
 
-  // Be sure to consider what happens if the word is not in this Trie.
+  for (var i = index; i < word.length; i++) {
+    if (_this) {
+      chars = _this.characters[word[i]];
+      _this = chars;
+    } else {
+      chars = false;
+    }
+  }
+
+  return chars;
+// This function will return the node in the trie
+// which corresponds to the end of the passed in word.
+
+// Be sure to consider what happens if the word is not in this Trie.
+/////////////////////////////////////////  Recrusive below
+// Trie.prototype.find = function(word, index){
+//   word = word || "";
+//   index = index || 0;
+//   var char = word[index];
+
+//   if (this.characters[char]) {
+//   return this.characters[char].find(word,index+1);
+//   } else if (index === word.length) {
+//     var answer = this;
+//     return answer;
+//   } else { return false; }
+// };
 };
 
 Trie.prototype.autoComplete = function(prefix) {
