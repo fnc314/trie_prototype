@@ -66,6 +66,7 @@ Trie.prototype.find = function(word, index) {
   }
 
   return chars;
+};
 // This function will return the node in the trie
 // which corresponds to the end of the passed in word.
 
@@ -77,16 +78,28 @@ Trie.prototype.find = function(word, index) {
 //   var char = word[index];
 
 //   if (this.characters[char]) {
-//   return this.characters[char].find(word,index+1);
+//     return this.characters[char].find(word,index+1);
 //   } else if (index === word.length) {
-//     var answer = this;
-//     return answer;
-//   } else { return false; }
+//     return this;
+//   } else { 
+//     return false; 
+//   }
 // };
-};
 
 Trie.prototype.autoComplete = function(prefix) {
   // This function will return all completions 
   // for a given prefix.
   // It should use find and getWords.
+  var find_results = this.find(prefix);
+  if (find_results) {
+    return find_results.getWords([], prefix);
+  } else {
+    return [];
+  }
 };
+
+
+
+
+
+
