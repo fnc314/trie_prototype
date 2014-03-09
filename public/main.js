@@ -5,7 +5,7 @@ App.Routers.Main = Backbone.Router.extend({
   },
 
   main: function (event) {
-    console.log("Running Main Funciton.");
+    
   }
 
 });

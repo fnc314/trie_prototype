@@ -19,3 +19,5 @@ $(document).ready(function(){
   App.initialize();
 });
 
+// http://en.wikipedia.org/wiki/TheSimpsons
+// http://en.wikipedia.org/wiki/The_Simpsons
