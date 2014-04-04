@@ -1,3 +1,9 @@
+Description:
+==
+
+An introduction to the Trie data type.  This is a useful datatype for storing data and lends itself well we features such as autocomplete (a feature built in these files).  The files were built and tested using data generated from Wikipedia.
+
+
 # Trie Miniproject: Trieing Wikipedia
 
 #### Wikipedia needs autocompletion, and you're up!
